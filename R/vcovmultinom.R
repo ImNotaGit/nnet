@@ -15,7 +15,7 @@
 #  A copy of the GNU General Public License is available at
 #  http://www.r-project.org/Licenses/
 #
-multinomHess <- function(object, Z = model.matrix(object))
+multinomHess <- function(object, Z = object$model.matrix)
 {
     probs <- object$fitted # avoid napredict from fitted.default
     coefs <- coef(object)

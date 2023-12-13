@@ -54,7 +54,7 @@ multinom <-
     m[[1L]] <- quote(stats::model.frame)
     m <- eval.parent(m)
     Terms <- attr(m, "terms")
-    X <- model.matrix(Terms, m, contrasts)
+    X <- mm <- model.matrix(Terms, m, contrasts)
     cons <- attr(X, "contrasts")
     Xr <- qr(X)$rank
     Y <- model.response(m)
@@ -145,6 +145,7 @@ multinom <-
         }
     }
     fit$formula <- attr(Terms, "formula")
+    fit$model.matrix <- mm
     fit$terms <- Terms
     fit$call <- call
     fit$weights <- w
